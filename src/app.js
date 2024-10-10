@@ -203,7 +203,7 @@ function createObject(x, y, i) {
       bodyB: stack.bodies[0],
       pointB: { x: 0, y: -55 },
       stiffness: 0.05,
-      length: 50
+      length: 75
     })
   );
 
