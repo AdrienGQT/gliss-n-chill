@@ -58,6 +58,48 @@ import sprite_col7_var1_3 from "/sprites/07sprites/sprite_var1_3.png";
 import sprite_col7_var1_4 from "/sprites/07sprites/sprite_var1_4.png";
 import sprite_col7_var1_5 from "/sprites/07sprites/sprite_var1_5.png";
 
+import sprite_col1_var2_1 from "/sprites/01sprites/sprite_var2_1.png";
+import sprite_col1_var2_2 from "/sprites/01sprites/sprite_var2_2.png";
+import sprite_col1_var2_3 from "/sprites/01sprites/sprite_var2_3.png";
+import sprite_col1_var2_4 from "/sprites/01sprites/sprite_var2_4.png";
+import sprite_col1_var2_5 from "/sprites/01sprites/sprite_var2_5.png";
+
+import sprite_col2_var2_1 from "/sprites/02sprites/sprite_var2_1.png";
+import sprite_col2_var2_2 from "/sprites/02sprites/sprite_var2_2.png";
+import sprite_col2_var2_3 from "/sprites/02sprites/sprite_var2_3.png";
+import sprite_col2_var2_4 from "/sprites/02sprites/sprite_var2_4.png";
+import sprite_col2_var2_5 from "/sprites/02sprites/sprite_var2_5.png";
+
+import sprite_col3_var2_1 from "/sprites/03sprites/sprite_var2_1.png";
+import sprite_col3_var2_2 from "/sprites/03sprites/sprite_var2_2.png";
+import sprite_col3_var2_3 from "/sprites/03sprites/sprite_var2_3.png";
+import sprite_col3_var2_4 from "/sprites/03sprites/sprite_var2_4.png";
+import sprite_col3_var2_5 from "/sprites/03sprites/sprite_var2_5.png";
+
+import sprite_col4_var2_1 from "/sprites/04sprites/sprite_var2_1.png";
+import sprite_col4_var2_2 from "/sprites/04sprites/sprite_var2_2.png";
+import sprite_col4_var2_3 from "/sprites/04sprites/sprite_var2_3.png";
+import sprite_col4_var2_4 from "/sprites/04sprites/sprite_var2_4.png";
+import sprite_col4_var2_5 from "/sprites/04sprites/sprite_var2_5.png";
+
+import sprite_col5_var2_1 from "/sprites/05sprites/sprite_var2_1.png";
+import sprite_col5_var2_2 from "/sprites/05sprites/sprite_var2_2.png";
+import sprite_col5_var2_3 from "/sprites/05sprites/sprite_var2_3.png";
+import sprite_col5_var2_4 from "/sprites/05sprites/sprite_var2_4.png";
+import sprite_col5_var2_5 from "/sprites/05sprites/sprite_var2_5.png";
+
+import sprite_col6_var2_1 from "/sprites/06sprites/sprite_var2_1.png";
+import sprite_col6_var2_2 from "/sprites/06sprites/sprite_var2_2.png";
+import sprite_col6_var2_3 from "/sprites/06sprites/sprite_var2_3.png";
+import sprite_col6_var2_4 from "/sprites/06sprites/sprite_var2_4.png";
+import sprite_col6_var2_5 from "/sprites/06sprites/sprite_var2_5.png";
+
+import sprite_col7_var2_1 from "/sprites/07sprites/sprite_var2_1.png";
+import sprite_col7_var2_2 from "/sprites/07sprites/sprite_var2_2.png";
+import sprite_col7_var2_3 from "/sprites/07sprites/sprite_var2_3.png";
+import sprite_col7_var2_4 from "/sprites/07sprites/sprite_var2_4.png";
+import sprite_col7_var2_5 from "/sprites/07sprites/sprite_var2_5.png";
+
 import foreground from "/decorations/foreground.png";
 import background from "/decorations/background.png";
 
@@ -83,13 +125,13 @@ let objectSpacing = -250;
 let objectQuantity = 7;
 
 
-const sprites01 = [sprite_col1_var1_1, sprite_col1_var1_2, sprite_col1_var1_3, sprite_col1_var1_4, sprite_col1_var1_5];
-const sprites02 = [sprite_col2_var1_1, sprite_col2_var1_2, sprite_col2_var1_3, sprite_col2_var1_4, sprite_col2_var1_5];
-const sprites03 = [sprite_col3_var1_1, sprite_col3_var1_2, sprite_col3_var1_3, sprite_col3_var1_4, sprite_col3_var1_5];
-const sprites04 = [sprite_col4_var1_1, sprite_col4_var1_2, sprite_col4_var1_3, sprite_col4_var1_4, sprite_col4_var1_5];
-const sprites05 = [sprite_col5_var1_1, sprite_col5_var1_2, sprite_col5_var1_3, sprite_col5_var1_4, sprite_col5_var1_5];
-const sprites06 = [sprite_col6_var1_1, sprite_col6_var1_2, sprite_col6_var1_3, sprite_col6_var1_4, sprite_col6_var1_5];
-const sprites07 = [sprite_col7_var1_1, sprite_col7_var1_2, sprite_col7_var1_3, sprite_col7_var1_4, sprite_col7_var1_5];
+const sprites01 = [sprite_col1_var1_1, sprite_col1_var1_2, sprite_col1_var1_3, sprite_col1_var1_4, sprite_col1_var1_5,sprite_col1_var2_1, sprite_col1_var2_2, sprite_col1_var2_3, sprite_col1_var2_4, sprite_col1_var2_5];
+const sprites02 = [sprite_col2_var1_1, sprite_col2_var1_2, sprite_col2_var1_3, sprite_col2_var1_4, sprite_col2_var1_5, sprite_col2_var2_1, sprite_col2_var2_2, sprite_col2_var2_3, sprite_col2_var2_4, sprite_col2_var2_5];
+const sprites03 = [sprite_col3_var1_1, sprite_col3_var1_2, sprite_col3_var1_3, sprite_col3_var1_4, sprite_col3_var1_5, sprite_col3_var2_1, sprite_col3_var2_2, sprite_col3_var2_3, sprite_col3_var2_4, sprite_col3_var2_5];
+const sprites04 = [sprite_col4_var1_1, sprite_col4_var1_2, sprite_col4_var1_3, sprite_col4_var1_4, sprite_col4_var1_5, sprite_col4_var2_1, sprite_col4_var2_2, sprite_col4_var2_3, sprite_col4_var2_4, sprite_col4_var2_5];
+const sprites05 = [sprite_col5_var1_1, sprite_col5_var1_2, sprite_col5_var1_3, sprite_col5_var1_4, sprite_col5_var1_5, sprite_col5_var2_1, sprite_col5_var2_2, sprite_col5_var2_3, sprite_col5_var2_4, sprite_col5_var2_5];
+const sprites06 = [sprite_col6_var1_1, sprite_col6_var1_2, sprite_col6_var1_3, sprite_col6_var1_4, sprite_col6_var1_5, sprite_col6_var2_1, sprite_col6_var2_2, sprite_col6_var2_3, sprite_col6_var2_4, sprite_col6_var2_5];
+const sprites07 = [sprite_col7_var1_1, sprite_col7_var1_2, sprite_col7_var1_3, sprite_col7_var1_4, sprite_col7_var1_5, sprite_col7_var2_1, sprite_col7_var2_2, sprite_col7_var2_3, sprite_col7_var2_4, sprite_col7_var2_5];
 
 const sprites = [sprites01,sprites02,sprites03,sprites04,sprites05,sprites06,sprites07]
 
@@ -130,7 +172,12 @@ function createObject(x, y, i) {
     let currentWidth = initialWidth - row * reductionStep;
     let currentHeight = Math.max(currentWidth, 10);
 
-    return Bodies.rectangle(x, y, currentWidth, initialHeight, {
+    let spriteRandom = Math.round(Math.random())
+    if(spriteRandom == 0){{
+      row+=5
+    }}
+
+    return Bodies.rectangle(x + Math.random() * (50 - (-50)) + (-50), y, currentWidth, initialHeight, {
       frictionAir: 0.01,
       density: 200,
       isStatic: false,
@@ -138,7 +185,7 @@ function createObject(x, y, i) {
         sprite: {
           texture: sprites[i][row],
           xScale: 0.3,
-          yScale: 0.3,
+          yScale: 0.45,
         },
       },
       objectId: i,
@@ -146,7 +193,7 @@ function createObject(x, y, i) {
   });
 
   // Chain the five rectangles together
-  Composites.chain(stack, 0, 0.5, 0, -0.5, { stiffness: 0.8, length: 3 });
+  Composites.chain(stack, 0, 0.5, 0, -0.5, { stiffness: 1, length: 3 });
 
   // Stick the whole object to the top of viewport with a constraint
   Composite.add(
@@ -156,6 +203,7 @@ function createObject(x, y, i) {
       bodyB: stack.bodies[0],
       pointB: { x: 0, y: -55 },
       stiffness: 0.05,
+      length: 50
     })
   );
 
@@ -166,7 +214,7 @@ function createObject(x, y, i) {
 
 // Manually place the 7 objects in line using the function above
 for (let i = 0; i < objectQuantity; i++) {
-  let object = createObject(1650 + i * objectSpacing, 100,i);
+  let object = createObject(1650 + i * objectSpacing + Math.random() * (10 - (-10)) + (-10), 125,i);
   for (let j = 0; j < 5; j++){
     objectsIds[i].push(i*5+j)
   }
@@ -186,28 +234,18 @@ let hand = Bodies.circle(100, 100, 25, {
 
 let foregroundBody = Bodies.rectangle(910, 490, 1820, 980, {
   isStatic: true,
-  isSensor: false, // Désactive les collisions tout en maintenant le rendu
+  isSensor: true, // Désactive les collisions tout en maintenant le rendu
   render: {
-    // fillStyle: 'red',
-    // strokeStyle: 'rgba(255,255,255,0.5)',
     sprite: {
       texture: foreground,
       xScale: 1,
     },
-  },
-  collisionFilter: {
-    category: 0x0001, // Catégorie unique
-    mask: 0x0000 // Aucune collision avec d'autres objets
   }
 });
-// World.add(engine.world, [foregroundBody]);
-
 
 let backgroundBody = Bodies.rectangle(910, 490, 1820, 980, {
   isStatic: true,
   render: {
-    // fillStyle: 'red',
-    // strokeStyle: 'white',
     sprite: {
       texture: background,
       xScale: 1,
@@ -285,6 +323,7 @@ const onSoundEnd = (e) => {
 const playSound = (path) => {
   let tag = document.createElement('audio');
   tag.src = path;
+  tag.volume = 0.7;
   document.body.appendChild(tag);
   tag.play();
   tag.addEventListener('ended', onSoundEnd)

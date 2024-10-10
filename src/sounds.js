@@ -3,14 +3,14 @@
 
 let ambiance01 = document.getElementById('ambiance01');
 
-ambiance01.volume = 1;
+ambiance01.volume = 0.5;
 
 // le son pour notre background de BG
 var audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 //un pti nœud de gain (pour contrôler le volume)
 var gainNode = audioContext.createGain();
-gainNode.gain.value = 0.09; // Valeur de gain (volume) entre 0 et 1, ici 50%
+gainNode.gain.value = 0.03 ; // Valeur de gain (volume) entre 0 et 1, ici 50%
 
 // Taille du buffer
 var bufferSize = 4096;
