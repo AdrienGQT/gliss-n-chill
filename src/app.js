@@ -170,14 +170,14 @@ function createObject(x, y, i) {
   // Create a stack with the five rectangles
   let stack = Composites.stack(x, y, 1, 5, 5, 5, function (x, y, column, row) {
     let currentWidth = initialWidth - row * reductionStep;
-    let currentHeight = Math.max(currentWidth, 10);
+    let currentHeight = initialHeight + Math.random() * (12 - (-15)) + (-15);
 
     let spriteRandom = Math.round(Math.random())
     if(spriteRandom == 0){{
       row+=5
     }}
 
-    return Bodies.rectangle(x + Math.random() * (60 - (-60)) + (-60), y, currentWidth, initialHeight, {
+    return Bodies.rectangle(x + Math.random() * (60 - (-60)) + (-60), y, currentWidth, currentHeight, {
       frictionAir: 0.01,
       density: 200,
       isStatic: false,
@@ -185,7 +185,7 @@ function createObject(x, y, i) {
         sprite: {
           texture: sprites[i][row],
           xScale: 0.3,
-          yScale: 0.35,
+          yScale: 0.4,
         },
       },
       objectId: i,
