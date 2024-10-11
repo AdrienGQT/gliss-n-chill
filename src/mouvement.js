@@ -20,9 +20,6 @@ export function getPalmY() {
   return palmY;
 }
 
-// export {palmX, palmY}
-
-
 const createPoseLandmarker = async () => {
   const vision = await FilesetResolver.forVisionTasks(
     "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/wasm"
@@ -64,6 +61,8 @@ function enableCam(event) {
   if (!poseLandmarker) {
     console.log("Wait! poseLandmaker not loaded yet.");
     return;
+  }else{
+    document.getElementById("webcamButton").innerText="Camera activée"
   }
 
   // getUsermedia parameters.
@@ -74,52 +73,24 @@ function enableCam(event) {
   // Activate the webcam stream.
   navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
     video.srcObject = stream;
-    video.addEventListener("loadeddata", predictWebcam);
   });
 }
 
 let lastVideoTime = -1;
 export function predictWebcam() {
-  canvasElement.style.height = videoHeight;
-  video.style.height = videoHeight;
-  canvasElement.style.width = videoWidth;
-  video.style.width = videoWidth;
 
   let startTimeMs = performance.now();
   if (lastVideoTime !== video.currentTime) {
     lastVideoTime = video.currentTime;
     poseLandmarker.detectForVideo(video, startTimeMs, (result) => {
-      canvasCtx.save();
-      canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-      // console.log(result)
 
       if (result.worldLandmarks.length > 0) {
         const palm = result.landmarks[0][20]
         palmX = palm.x;
         palmY = palm.y;
-        // console.log(palmX,palmY)
-        // console.log('palm x is', palm.x, 'palm y is', palm.y)
         canvasCtx.fillRect(100 * palm.x, 100 * palm.y, 15, 15)
-        // console.log(palm.x,palm.y)
-        // return(palmX,palmY);
-        document.getElementById("webcamButton").innerText=palm.x
       }
-
-      // skeleton drawing
-      for (const landmark of result.landmarks) {
-        drawingUtils.drawLandmarks(landmark, {
-          radius: (data) => DrawingUtils.lerp(data.from.z, -0.15, 0.1, 5, 1)
-        });
-        drawingUtils.drawConnectors(landmark, PoseLandmarker.POSE_CONNECTIONS);
-      }
-      
-      canvasCtx.restore();
     });
   }
-  // Call this function again to keep predicting when the browser is ready.
-
-  // window.requestAnimationFrame(predictWebcam);
-
-
 }
 

@@ -177,7 +177,7 @@ function createObject(x, y, i) {
       row+=5
     }}
 
-    return Bodies.rectangle(x + Math.random() * (50 - (-50)) + (-50), y, currentWidth, initialHeight, {
+    return Bodies.rectangle(x + Math.random() * (60 - (-60)) + (-60), y, currentWidth, initialHeight, {
       frictionAir: 0.01,
       density: 200,
       isStatic: false,
@@ -185,7 +185,7 @@ function createObject(x, y, i) {
         sprite: {
           texture: sprites[i][row],
           xScale: 0.3,
-          yScale: 0.45,
+          yScale: 0.35,
         },
       },
       objectId: i,
@@ -202,8 +202,8 @@ function createObject(x, y, i) {
       pointA: { x: x, y: y },
       bodyB: stack.bodies[0],
       pointB: { x: 0, y: -55 },
-      stiffness: 0.05,
-      length: 75
+      stiffness: 0.5,
+      length: 90,
     })
   );
 
