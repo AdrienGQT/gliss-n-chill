@@ -15,4 +15,5 @@ Gliss n Chill places you in a **serene forest environment** surrounded by **seve
 - 💻 **JavaScript, CSS, HTML** for structure and styling  
 
 ## 🚀 Development Notes  
-This project is a **real-time interactive experience**, blending movement and sound to create a **calm and engaging atmosphere**.  
+This project is a **real-time interactive experience**, blending movement and sound to create a **calm and engaging atmosphere**.
+Test right now at https://di30.gobelins-pedago.fr/2026/gasquet/glisse-n-chill/
