@@ -1,6 +1,6 @@
 # 🎶 Gliss n Chill  
 
-**Gliss n Chill** was developed during a workshop called **"Movement and Sounds"**. The goal of this project was to create an **immersive experience** that reacts to **movement and sound**.  
+**Gliss n Chill** was developed during a four days long workshop called **"Movement and Sounds"**. The goal of this project was to create an **immersive experience** that reacts to **movement and sound**.  
 
 ## 🎵 Experience  
 Gliss n Chill places you in a **serene forest environment** surrounded by **seven wisteria flowers**. Using **body movement**, you can interact with these flowers to **create music**.  
