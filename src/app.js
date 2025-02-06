@@ -354,7 +354,7 @@ Events.on(engine, "collisionStart", (event) => {
         console.log(currentCollidingBodyId);
         // console.log(currentCollidingBodyId)
         for(let i = 0; i < objectQuantity; i++){
-          playSound(`/sounds/notes/note0${currentCollidingBodyId + 1}.mp3`)
+          playSound(`sounds/notes/note0${currentCollidingBodyId + 1}.mp3`)
         }
       }
     }
