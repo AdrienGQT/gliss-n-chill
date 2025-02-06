@@ -396,4 +396,9 @@ Runner.run(runner, engine);
 Engine.run(engine);
 Render.run(render);
 
+const foregroundHTML = document.querySelector('.foreground')
+const canvasPosition = document.querySelectorAll('canvas')[1].getBoundingClientRect()
+console.log(`${canvasPosition.y}px`)
+foregroundHTML.style.top = `${canvasPosition.y}px`
+
 

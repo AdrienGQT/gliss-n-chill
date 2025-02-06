@@ -145,12 +145,12 @@ video, canvas {
 
 .foreground{
   position: absolute;
-  top:100px;
   z-index: 10;
+
   /* background-color: red; */
   width: 1820px;
   height: 980px;
-  background-image: url("/public/decorations/foreground.png");
+  background-image: url("/decorations/foreground.png");
   background-position: center;
   background-size: cover;
 }
