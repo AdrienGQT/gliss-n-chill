@@ -154,3 +154,8 @@ video, canvas {
   background-position: center;
   background-size: cover;
 }
+
+#output_canvas{
+  width: 300px;
+  aspect-ratio: 16/9;
+}

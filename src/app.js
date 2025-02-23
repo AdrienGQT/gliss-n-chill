@@ -135,10 +135,15 @@ const sprites07 = [sprite_col7_var1_1, sprite_col7_var1_2, sprite_col7_var1_3, s
 
 const sprites = [sprites01,sprites02,sprites03,sprites04,sprites05,sprites06,sprites07]
 
-// console.log(sprites[1][0])
-
 // Set engine
 let engine = Engine.create();
+
+console.log(window.innerHeight, window.innerWidth)
+
+let sizes = {
+  windowWidth : window.innerWidth,
+  windowHeight : window.innerHeight
+}
 
 // Set render
 let render = Render.create({
@@ -351,7 +356,7 @@ Events.on(engine, "collisionStart", (event) => {
         pHandX = hand.position.x;
         pHandY = hand.position.y;
         collisionInterval = setInterval(giveVelocity, 5);
-        console.log(currentCollidingBodyId);
+        // console.log(currentCollidingBodyId);
         // console.log(currentCollidingBodyId)
         for(let i = 0; i < objectQuantity; i++){
           playSound(`sounds/notes/note0${currentCollidingBodyId + 1}.mp3`)
@@ -396,9 +401,9 @@ Runner.run(runner, engine);
 Engine.run(engine);
 Render.run(render);
 
-const foregroundHTML = document.querySelector('.foreground')
-const canvasPosition = document.querySelectorAll('canvas')[1].getBoundingClientRect()
-console.log(`${canvasPosition.y}px`)
-foregroundHTML.style.top = `${canvasPosition.y}px`
+// const foregroundHTML = document.querySelector('.foreground')
+// const canvasPosition = document.querySelectorAll('canvas')[1].getBoundingClientRect()
+// console.log(`${canvasPosition.y}px`)
+// foregroundHTML.style.top = `${canvasPosition.y}px`
 
 

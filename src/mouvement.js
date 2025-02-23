@@ -1,54 +1,66 @@
+// Import necessary modules from the MediaPipe library
 import {
   PoseLandmarker,
   FilesetResolver,
-  DrawingUtils
+  DrawingUtils,
 } from "@mediapipe/tasks-vision";
 
-
+// Initialize variables
 let poseLandmarker = undefined;
 let enableWebcamButton;
 let palmX;
 let palmY;
+
+// Set video dimensions
 const videoHeight = "360px";
 const videoWidth = "480px";
 
+// Function to get the x-coordinate of the palm
 export function getPalmX() {
   return palmX;
 }
 
+// Function to get the y-coordinate of the palm
 export function getPalmY() {
   return palmY;
 }
 
+// Asynchronous function to create a PoseLandmarker instance
 const createPoseLandmarker = async () => {
-  const vision = await FilesetResolver.forVisionTasks(
-    "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/wasm"
-  );
-  poseLandmarker = await PoseLandmarker.createFromOptions(vision, {
-    baseOptions: {
-      modelAssetPath: `https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task`,
-      delegate: "GPU"
-    },
-    runningMode: 'VIDEO',
-    numPoses: 2
-  });
+  try {
+    // Resolve the fileset for vision tasks
+    const vision = await FilesetResolver.forVisionTasks(
+      "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/wasm"
+    );
 
+    // Create the PoseLandmarker instance with specified options
+    poseLandmarker = await PoseLandmarker.createFromOptions(vision, {
+      baseOptions: {
+        modelAssetPath: `https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task`,
+        delegate: "GPU", // Use GPU for faster processing
+      },
+      runningMode: "VIDEO", // Run in video mode
+      numPoses: 2, // Detect up to 2 poses
+    });
+    console.log("PoseLandmarker loaded successfully.");
+  } catch (error) {
+    console.error("Error loading PoseLandmarker:", error);
+  }
 };
+
+// Call the function to initialize the PoseLandmarker
 createPoseLandmarker();
 
-
-const video = document.getElementById("webcam")
-const canvasElement = document.getElementById(
-  "output_canvas"
-)
+// Get references to the video and canvas elements
+const video = document.getElementById("webcam");
+const canvasElement = document.getElementById("output_canvas");
 const canvasCtx = canvasElement.getContext("2d");
 const drawingUtils = new DrawingUtils(canvasCtx);
 
-// Check if webcam access is supported.
+// Check if the browser supports webcam access
 const hasGetUserMedia = () => !!navigator.mediaDevices?.getUserMedia;
 
-// If webcam supported, add event listener to button for when user
-// wants to activate it.
+// If webcam access is supported, add event listener to the button
 if (hasGetUserMedia()) {
   enableWebcamButton = document.getElementById("webcamButton");
   enableWebcamButton.addEventListener("click", enableCam);
@@ -56,41 +68,73 @@ if (hasGetUserMedia()) {
   console.warn("getUserMedia() is not supported by your browser");
 }
 
-// Enable the live webcam view and start detection.
+// Function to enable the webcam and start detection
 function enableCam(event) {
   if (!poseLandmarker) {
-    console.log("Wait! poseLandmaker not loaded yet.");
+    console.log("Wait! PoseLandmarker is not loaded yet.");
     return;
-  }else{
-    document.getElementById("webcamButton").innerText="Camera activée"
   }
 
-  // getUsermedia parameters.
+  console.log("Camera activated");
+  document.getElementById("webcamButton").innerText = "Camera activée";
+
+  // Get user media parameters
   const constraints = {
-    video: true
+    video: true,
   };
 
-  // Activate the webcam stream.
+  // Activate the webcam stream
   navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
     video.srcObject = stream;
+    video.onloadedmetadata = () => {
+      video.play();
+      requestAnimationFrame(predictWebcam);
+    };
+  }).catch(error => {
+    console.error("Error accessing the webcam:", error);
   });
 }
 
+// Variable to keep track of the last video time
 let lastVideoTime = -1;
-export function predictWebcam() {
 
-  let startTimeMs = performance.now();
-  if (lastVideoTime !== video.currentTime) {
-    lastVideoTime = video.currentTime;
-    poseLandmarker.detectForVideo(video, startTimeMs, (result) => {
-
-      if (result.worldLandmarks.length > 0) {
-        const palm = result.landmarks[0][20]
-        palmX = palm.x;
-        palmY = palm.y;
-        canvasCtx.fillRect(100 * palm.x, 100 * palm.y, 15, 15)
-      }
+// Function to draw the pose landmarks on the canvas
+function drawResults(results) {
+  canvasCtx.save();
+  canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+  canvasCtx.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+  results.landmarks.forEach((landmarks, index) => {
+    drawingUtils.drawLandmarks(landmarks, {
+      radius: (data) => DrawingUtils.lerp(data.from.z, -0.15, .1, 5, 1)
     });
-  }
+    drawingUtils.drawConnectors(landmarks, PoseLandmarker.POSE_CONNECTIONS);
+  });
+  canvasCtx.restore();
 }
 
+// Function to predict poses from the webcam feed
+export function predictWebcam() {
+  if (!video.paused && !video.ended) {
+    let startTimeMs = performance.now();
+
+    // Check if the video time has changed to avoid redundant processing
+    if (lastVideoTime !== video.currentTime) {
+      lastVideoTime = video.currentTime;
+
+      if (poseLandmarker) {
+        poseLandmarker.detectForVideo(video, startTimeMs, (result) => {
+          if (result.landmarks.length > 0) {
+            // Extract the palm landmark coordinates
+            const palm = result.landmarks[0][20];
+            palmX = palm.x;
+            palmY = palm.y;
+
+            // Draw the results on the canvas
+            drawResults(result);
+          }
+        });
+      }
+    }
+    requestAnimationFrame(predictWebcam);
+  }
+}
