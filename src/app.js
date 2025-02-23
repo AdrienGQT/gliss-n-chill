@@ -13,8 +13,9 @@ import {
   Events,
 } from "matter-js";
 
+import gsap from "gsap";
 
-import {getPalmX, getPalmY, predictWebcam} from "../src/mouvement.js";
+import { getPalmX, getPalmY, predictWebcam } from "../src/mouvement.js";
 
 import sprite_col1_var1_1 from "/sprites/01sprites/sprite_var1_1.png";
 import sprite_col1_var1_2 from "/sprites/01sprites/sprite_var1_2.png";
@@ -119,39 +120,136 @@ let object4Id = [];
 let object5Id = [];
 let object6Id = [];
 let object7Id = [];
-let objectsIds = [object1Id,object2Id,object3Id,object4Id,object5Id,object6Id,object7Id]
+let objectsIds = [
+  object1Id,
+  object2Id,
+  object3Id,
+  object4Id,
+  object5Id,
+  object6Id,
+  object7Id,
+];
 
-let objectSpacing = -250;
-let objectQuantity = 7;
+const sprites01 = [
+  sprite_col1_var1_1,
+  sprite_col1_var1_2,
+  sprite_col1_var1_3,
+  sprite_col1_var1_4,
+  sprite_col1_var1_5,
+  sprite_col1_var2_1,
+  sprite_col1_var2_2,
+  sprite_col1_var2_3,
+  sprite_col1_var2_4,
+  sprite_col1_var2_5,
+];
+const sprites02 = [
+  sprite_col2_var1_1,
+  sprite_col2_var1_2,
+  sprite_col2_var1_3,
+  sprite_col2_var1_4,
+  sprite_col2_var1_5,
+  sprite_col2_var2_1,
+  sprite_col2_var2_2,
+  sprite_col2_var2_3,
+  sprite_col2_var2_4,
+  sprite_col2_var2_5,
+];
+const sprites03 = [
+  sprite_col3_var1_1,
+  sprite_col3_var1_2,
+  sprite_col3_var1_3,
+  sprite_col3_var1_4,
+  sprite_col3_var1_5,
+  sprite_col3_var2_1,
+  sprite_col3_var2_2,
+  sprite_col3_var2_3,
+  sprite_col3_var2_4,
+  sprite_col3_var2_5,
+];
+const sprites04 = [
+  sprite_col4_var1_1,
+  sprite_col4_var1_2,
+  sprite_col4_var1_3,
+  sprite_col4_var1_4,
+  sprite_col4_var1_5,
+  sprite_col4_var2_1,
+  sprite_col4_var2_2,
+  sprite_col4_var2_3,
+  sprite_col4_var2_4,
+  sprite_col4_var2_5,
+];
+const sprites05 = [
+  sprite_col5_var1_1,
+  sprite_col5_var1_2,
+  sprite_col5_var1_3,
+  sprite_col5_var1_4,
+  sprite_col5_var1_5,
+  sprite_col5_var2_1,
+  sprite_col5_var2_2,
+  sprite_col5_var2_3,
+  sprite_col5_var2_4,
+  sprite_col5_var2_5,
+];
+const sprites06 = [
+  sprite_col6_var1_1,
+  sprite_col6_var1_2,
+  sprite_col6_var1_3,
+  sprite_col6_var1_4,
+  sprite_col6_var1_5,
+  sprite_col6_var2_1,
+  sprite_col6_var2_2,
+  sprite_col6_var2_3,
+  sprite_col6_var2_4,
+  sprite_col6_var2_5,
+];
+const sprites07 = [
+  sprite_col7_var1_1,
+  sprite_col7_var1_2,
+  sprite_col7_var1_3,
+  sprite_col7_var1_4,
+  sprite_col7_var1_5,
+  sprite_col7_var2_1,
+  sprite_col7_var2_2,
+  sprite_col7_var2_3,
+  sprite_col7_var2_4,
+  sprite_col7_var2_5,
+];
 
-
-const sprites01 = [sprite_col1_var1_1, sprite_col1_var1_2, sprite_col1_var1_3, sprite_col1_var1_4, sprite_col1_var1_5,sprite_col1_var2_1, sprite_col1_var2_2, sprite_col1_var2_3, sprite_col1_var2_4, sprite_col1_var2_5];
-const sprites02 = [sprite_col2_var1_1, sprite_col2_var1_2, sprite_col2_var1_3, sprite_col2_var1_4, sprite_col2_var1_5, sprite_col2_var2_1, sprite_col2_var2_2, sprite_col2_var2_3, sprite_col2_var2_4, sprite_col2_var2_5];
-const sprites03 = [sprite_col3_var1_1, sprite_col3_var1_2, sprite_col3_var1_3, sprite_col3_var1_4, sprite_col3_var1_5, sprite_col3_var2_1, sprite_col3_var2_2, sprite_col3_var2_3, sprite_col3_var2_4, sprite_col3_var2_5];
-const sprites04 = [sprite_col4_var1_1, sprite_col4_var1_2, sprite_col4_var1_3, sprite_col4_var1_4, sprite_col4_var1_5, sprite_col4_var2_1, sprite_col4_var2_2, sprite_col4_var2_3, sprite_col4_var2_4, sprite_col4_var2_5];
-const sprites05 = [sprite_col5_var1_1, sprite_col5_var1_2, sprite_col5_var1_3, sprite_col5_var1_4, sprite_col5_var1_5, sprite_col5_var2_1, sprite_col5_var2_2, sprite_col5_var2_3, sprite_col5_var2_4, sprite_col5_var2_5];
-const sprites06 = [sprite_col6_var1_1, sprite_col6_var1_2, sprite_col6_var1_3, sprite_col6_var1_4, sprite_col6_var1_5, sprite_col6_var2_1, sprite_col6_var2_2, sprite_col6_var2_3, sprite_col6_var2_4, sprite_col6_var2_5];
-const sprites07 = [sprite_col7_var1_1, sprite_col7_var1_2, sprite_col7_var1_3, sprite_col7_var1_4, sprite_col7_var1_5, sprite_col7_var2_1, sprite_col7_var2_2, sprite_col7_var2_3, sprite_col7_var2_4, sprite_col7_var2_5];
-
-const sprites = [sprites01,sprites02,sprites03,sprites04,sprites05,sprites06,sprites07]
+const sprites = [
+  sprites01,
+  sprites02,
+  sprites03,
+  sprites04,
+  sprites05,
+  sprites06,
+  sprites07,
+];
 
 // Set engine
 let engine = Engine.create();
 
-console.log(window.innerHeight, window.innerWidth)
-
 let sizes = {
-  windowWidth : window.innerWidth,
-  windowHeight : window.innerHeight
-}
+  windowWidth: window.innerWidth,
+  windowHeight: window.innerHeight,
+};
+
+let scales = {
+  decorationX: sizes.windowWidth / 1820,
+  decorationY: sizes.windowHeight / 980,
+  min: Math.min(sizes.windowWidth / 1820, sizes.windowHeight / 980),
+  max: Math.max(sizes.windowWidth / 1820, sizes.windowHeight / 980),
+};
+
+let objectSpacing = -250 * scales.decorationX;
+let objectQuantity = 7;
 
 // Set render
 let render = Render.create({
   element: document.body,
   engine: engine,
   options: {
-    width: 1820,
-    height: 980,
+    width: sizes.windowWidth,
+    height: sizes.windowHeight,
     showAngleIndicator: false,
     showCollisions: false,
     showVelocity: false,
@@ -162,43 +260,57 @@ let render = Render.create({
 // Set gravity value
 engine.world.gravity.y = 4;
 
-
-
 // Function to create a composite object with rectangles
 function createObject(x, y, i) {
   let object = Composite.create();
 
-  let initialWidth = 150;
-  let initialHeight = 100;
+  let initialWidth = 150 * scales.decorationX;
+  let initialHeight = 100 * scales.decorationX;
   let reductionStep = 13;
 
   // Create a stack with the five rectangles
   let stack = Composites.stack(x, y, 1, 5, 5, 5, function (x, y, column, row) {
     let currentWidth = initialWidth - row * reductionStep;
-    let currentHeight = initialHeight + Math.random() * (12 - (-15)) + (-15);
+    let currentHeight = initialHeight + gsap.utils.random(-15, 12);
 
-    let spriteRandom = Math.round(Math.random())
-    if(spriteRandom == 0){{
-      row+=5
-    }}
+    let spriteRandom = Math.round(Math.random());
+    if (spriteRandom == 0) {
+      {
+        row += 5;
+      }
+    }
 
-    return Bodies.rectangle(x + Math.random() * (60 - (-60)) + (-60), y, currentWidth, currentHeight, {
-      frictionAir: 0.01,
-      density: 200,
-      isStatic: false,
-      render: {
-        sprite: {
-          texture: sprites[i][row],
-          xScale: 0.3,
-          yScale: 0.4,
+    return Bodies.rectangle(
+      x + gsap.utils.random(-60, 60),
+      y,
+      currentWidth,
+      currentHeight,
+      {
+        frictionAir: 0.01,
+        density: 200,
+        isStatic: false,
+        render: {
+          sprite: {
+            texture: sprites[i][row],
+            xScale: 0.3 * scales.decorationX,
+            yScale: 0.4 * scales.decorationX,
+          },
         },
-      },
-      objectId: i,
-    });
+        objectId: i,
+      }
+    );
   });
 
+  // Body.scale(stack, 2, 2)
+
   // Chain the five rectangles together
-  Composites.chain(stack, 0, 0.5, 0, -0.5, { stiffness: 1, length: 3 });
+  Composites.chain(stack, 0, 0.5, 0, -0.5, {
+    stiffness: 1,
+    length: 3 * scales.decorationY,
+    render: {
+      visible : false
+    }
+  });
 
   // Stick the whole object to the top of viewport with a constraint
   Composite.add(
@@ -208,20 +320,33 @@ function createObject(x, y, i) {
       bodyB: stack.bodies[0],
       pointB: { x: 0, y: -55 },
       stiffness: 0.5,
-      length: 90,
+      length: 90 * scales.decorationY,
+      render: {
+        visible : false
+      }
     })
   );
 
   Composite.add(object, stack);
+
+  // Composite.scale(object,2,2)
 
   return object;
 }
 
 // Manually place the 7 objects in line using the function above
 for (let i = 0; i < objectQuantity; i++) {
-  let object = createObject(1650 + i * objectSpacing + Math.random() * (10 - (-10)) + (-10), 125,i);
-  for (let j = 0; j < 5; j++){
-    objectsIds[i].push(i*5+j)
+  let object = createObject(
+    sizes.windowWidth -
+      200 * scales.decorationX +
+      (i + 0.5) *
+        ((-1 * (sizes.windowWidth - 400 * scales.decorationX)) /
+          objectQuantity),
+    105 * scales.decorationY,
+    i
+  );
+  for (let j = 0; j < 5; j++) {
+    objectsIds[i].push(i * 5 + j);
   }
   World.add(engine.world, object);
 }
@@ -229,44 +354,55 @@ for (let i = 0; i < objectQuantity; i++) {
 // Create the hand shape
 let hand = Bodies.circle(100, 100, 25, {
   render: {
-    strokeStyle:'white',
-    fillStyle:'rgba(255,255,255,0.5)'
+    strokeStyle: "white",
+    fillStyle: "rgba(255,255,255,0.5)",
   },
   isStatic: true,
   isSensor: true,
 });
 
-
-let foregroundBody = Bodies.rectangle(910, 490, 1820, 980, {
-  isStatic: true,
-  isSensor: true, // Désactive les collisions tout en maintenant le rendu
-  render: {
-    sprite: {
-      texture: foreground,
-      xScale: 1,
+let foregroundBody = Bodies.rectangle(
+  sizes.windowWidth / 2,
+  sizes.windowHeight / 2,
+  sizes.windowWidth,
+  sizes.windowHeight,
+  {
+    isStatic: true,
+    isSensor: true, // Désactive les collisions tout en maintenant le rendu
+    render: {
+      sprite: {
+        texture: foreground,
+        xScale: scales.max,
+        yScale: scales.max,
+      },
     },
   }
-});
+);
 
-let backgroundBody = Bodies.rectangle(910, 490, 1820, 980, {
-  isStatic: true,
-  render: {
-    sprite: {
-      texture: background,
-      xScale: 1,
-      yScale: 1
+let backgroundBody = Bodies.rectangle(
+  sizes.windowWidth / 2,
+  sizes.windowHeight / 2,
+  sizes.windowWidth,
+  sizes.windowHeight,
+  {
+    isStatic: true,
+    render: {
+      sprite: {
+        texture: background,
+        xScale: scales.max,
+        yScale: scales.max,
+      },
     },
-  },
-  collisionFilter: {
-    category: 0x0001, // Catégorie arbitraire pour éviter toute collision
-    mask: 0x0000 // Aucune autre catégorie ne pourra entrer en collision avec cet objet
+    collisionFilter: {
+      category: 0x0001, // Catégorie arbitraire pour éviter toute collision
+      mask: 0x0000, // Aucune autre catégorie ne pourra entrer en collision avec cet objet
+    },
   }
-});
+);
 World.add(engine.world, [backgroundBody, foregroundBody]);
 
-
 // Vitesse de transition de la main (ajuste cette valeur pour obtenir la fluidité souhaitée)
-let handSpeed = 0.3; // 0.1 est une vitesse relativement lente, tu peux augmenter pour plus de rapidité
+let handSpeed = 0.3; // 0.1 est une vitesse relativement lente
 
 // Fonction pour interpoler la position de la main vers palmX et palmY
 const refreshHand = () => {
@@ -295,7 +431,6 @@ Events.on(engine, "beforeUpdate", function () {
   refreshHand(); // Update hand position before each engine update
 });
 
-
 // Variables about the object in collision with the hand
 let currentCollidingBodyId = null;
 let collidingBody = null;
@@ -323,16 +458,16 @@ let collisionInterval = null;
 
 const onSoundEnd = (e) => {
   e.target.remove();
-}
+};
 
 const playSound = (path) => {
-  let tag = document.createElement('audio');
+  let tag = document.createElement("audio");
   tag.src = path;
   tag.volume = 0.7;
   document.body.appendChild(tag);
   tag.play();
-  tag.addEventListener('ended', onSoundEnd)
-}
+  tag.addEventListener("ended", onSoundEnd);
+};
 
 // Collision start detector
 Events.on(engine, "collisionStart", (event) => {
@@ -358,15 +493,13 @@ Events.on(engine, "collisionStart", (event) => {
         collisionInterval = setInterval(giveVelocity, 5);
         // console.log(currentCollidingBodyId);
         // console.log(currentCollidingBodyId)
-        for(let i = 0; i < objectQuantity; i++){
-          playSound(`sounds/notes/note0${currentCollidingBodyId + 1}.mp3`)
+        for (let i = 0; i < objectQuantity; i++) {
+          playSound(`sounds/notes/note0${currentCollidingBodyId + 1}.mp3`);
         }
       }
     }
   });
 });
-
-
 
 // Collision end detector
 Events.on(engine, "collisionEnd", (event) => {
@@ -391,8 +524,6 @@ Events.on(engine, "collisionEnd", (event) => {
 
 World.add(engine.world, [hand]);
 
-
-
 // Create Runner
 let runner = Runner.create();
 Runner.run(runner, engine);
@@ -405,5 +536,3 @@ Render.run(render);
 // const canvasPosition = document.querySelectorAll('canvas')[1].getBoundingClientRect()
 // console.log(`${canvasPosition.y}px`)
 // foregroundHTML.style.top = `${canvasPosition.y}px`
-
-

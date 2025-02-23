@@ -12,7 +12,7 @@ let palmX;
 let palmY;
 
 // Set video dimensions
-const videoHeight = "360px";
+const videoHeight = "275px";
 const videoWidth = "480px";
 
 // Function to get the x-coordinate of the palm
@@ -76,7 +76,7 @@ function enableCam(event) {
   }
 
   console.log("Camera activated");
-  document.getElementById("webcamButton").innerText = "Camera activée";
+  document.getElementById("webcamButton").innerText = "Camera active";
 
   // Get user media parameters
   const constraints = {
@@ -84,15 +84,18 @@ function enableCam(event) {
   };
 
   // Activate the webcam stream
-  navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-    video.srcObject = stream;
-    video.onloadedmetadata = () => {
-      video.play();
-      requestAnimationFrame(predictWebcam);
-    };
-  }).catch(error => {
-    console.error("Error accessing the webcam:", error);
-  });
+  navigator.mediaDevices
+    .getUserMedia(constraints)
+    .then((stream) => {
+      video.srcObject = stream;
+      video.onloadedmetadata = () => {
+        video.play();
+        requestAnimationFrame(predictWebcam);
+      };
+    })
+    .catch((error) => {
+      console.error("Error accessing the webcam:", error);
+    });
 }
 
 // Variable to keep track of the last video time
@@ -105,7 +108,7 @@ function drawResults(results) {
   canvasCtx.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
   results.landmarks.forEach((landmarks, index) => {
     drawingUtils.drawLandmarks(landmarks, {
-      radius: (data) => DrawingUtils.lerp(data.from.z, -0.15, .1, 5, 1)
+      radius: (data) => DrawingUtils.lerp(data.from.z, -0.15, 0.1, 5, 1),
     });
     drawingUtils.drawConnectors(landmarks, PoseLandmarker.POSE_CONNECTIONS);
   });
