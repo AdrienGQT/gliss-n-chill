@@ -118,7 +118,7 @@ let lastVideoTime = -1;
 function drawResults(results) {
   canvasCtx.save();
   canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-  canvasCtx.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+  // canvasCtx.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
   results.landmarks.forEach((landmarks, index) => {
     drawingUtils.drawLandmarks(landmarks, {
       radius: (data) => DrawingUtils.lerp(data.from.z, -0.15, 0.1, 5, 1),
