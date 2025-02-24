@@ -10,10 +10,23 @@ let poseLandmarker = undefined;
 let enableWebcamButton;
 let palmX;
 let palmY;
+let rightPalmTracked = true;
 
 // Set video dimensions
 const videoHeight = "275px";
 const videoWidth = "480px";
+
+const switchHand = () => {
+  console.log('switch hand')
+  if(rightPalmTracked){
+    rightPalmTracked = false
+  }else{
+    rightPalmTracked = true
+  }
+}
+
+document.querySelector('#handSwitchButton').addEventListener('click', switchHand)
+
 
 // Function to get the x-coordinate of the palm
 export function getPalmX() {
@@ -127,8 +140,13 @@ export function predictWebcam() {
       if (poseLandmarker) {
         poseLandmarker.detectForVideo(video, startTimeMs, (result) => {
           if (result.landmarks.length > 0) {
+            let palm;
             // Extract the palm landmark coordinates
-            const palm = result.landmarks[0][20];
+            if (rightPalmTracked) {
+              palm = result.landmarks[0][20];
+            }else{
+              palm = result.landmarks[0][19];
+            }
             palmX = palm.x;
             palmY = palm.y;
 

@@ -9,16 +9,28 @@
   <body>
     <!-- <div class="foreground"></div> -->
     <div id="app">
-      <button id="webcamButton">Enable camera</button>
-      <div id="liveView" class="videoView">
-        
-        <!-- Hidden -->
-        <video id="webcam" autoplay playsinline style="display: none;"></video> 
-        <!-- Hidden -->
-        <canvas id="output_canvas" style="display: unset;" >
+      <div class="actions">
+        <button id="webcamButton">Enable camera</button>
+        <button id="handSwitchButton">Switch hand</button>
       </div>
-      <audio id="ambiance01" src="sounds/ambiance/ambiance01.mpeg" loop autoplay></audio>
-      <audio id="ambiance02" src="sounds/ambiance/ambiance02.mp3" loop autoplay></audio>
+
+      <div id="liveView" class="videoView">
+        <video id="webcam" autoplay playsinline style="display: none"></video>
+        <canvas id="output_canvas" style="display: unset"></canvas>
+      </div>
+
+      <audio
+        id="ambiance01"
+        src="sounds/ambiance/ambiance01.mpeg"
+        loop
+        autoplay
+      ></audio>
+      <audio
+        id="ambiance02"
+        src="sounds/ambiance/ambiance02.mp3"
+        loop
+        autoplay
+      ></audio>
     </div>
     <script type="module" src="/src/main.js"></script>
     <script type="module" src="/src/mouvement.js"></script>
@@ -26,4 +38,3 @@
     <script type="module" src="src/sounds.js"></script>
   </body>
 </html>
-
