@@ -158,11 +158,14 @@ video, canvas {
 
 .foreground{
   position: absolute;
-  z-index: 10;
-
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 2.2;
+  opacity: 1;
   /* background-color: red; */
-  width: 1820px;
-  height: 980px;
+  /* height: 100%; */
+  z-index: 10;
   background-image: url("/decorations/foreground.png");
   background-position: center;
   background-size: cover;

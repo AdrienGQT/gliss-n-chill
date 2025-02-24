@@ -17,90 +17,6 @@ import gsap from "gsap";
 
 import { getPalmX, getPalmY, predictWebcam } from "../src/mouvement.js";
 
-import sprite_col1_var1_1 from "/sprites/01sprites/sprite_var1_1.png";
-import sprite_col1_var1_2 from "/sprites/01sprites/sprite_var1_2.png";
-import sprite_col1_var1_3 from "/sprites/01sprites/sprite_var1_3.png";
-import sprite_col1_var1_4 from "/sprites/01sprites/sprite_var1_4.png";
-import sprite_col1_var1_5 from "/sprites/01sprites/sprite_var1_5.png";
-
-import sprite_col2_var1_1 from "/sprites/02sprites/sprite_var1_1.png";
-import sprite_col2_var1_2 from "/sprites/02sprites/sprite_var1_2.png";
-import sprite_col2_var1_3 from "/sprites/02sprites/sprite_var1_3.png";
-import sprite_col2_var1_4 from "/sprites/02sprites/sprite_var1_4.png";
-import sprite_col2_var1_5 from "/sprites/02sprites/sprite_var1_5.png";
-
-import sprite_col3_var1_1 from "/sprites/03sprites/sprite_var1_1.png";
-import sprite_col3_var1_2 from "/sprites/03sprites/sprite_var1_2.png";
-import sprite_col3_var1_3 from "/sprites/03sprites/sprite_var1_3.png";
-import sprite_col3_var1_4 from "/sprites/03sprites/sprite_var1_4.png";
-import sprite_col3_var1_5 from "/sprites/03sprites/sprite_var1_5.png";
-
-import sprite_col4_var1_1 from "/sprites/04sprites/sprite_var1_1.png";
-import sprite_col4_var1_2 from "/sprites/04sprites/sprite_var1_2.png";
-import sprite_col4_var1_3 from "/sprites/04sprites/sprite_var1_3.png";
-import sprite_col4_var1_4 from "/sprites/04sprites/sprite_var1_4.png";
-import sprite_col4_var1_5 from "/sprites/04sprites/sprite_var1_5.png";
-
-import sprite_col5_var1_1 from "/sprites/05sprites/sprite_var1_1.png";
-import sprite_col5_var1_2 from "/sprites/05sprites/sprite_var1_2.png";
-import sprite_col5_var1_3 from "/sprites/05sprites/sprite_var1_3.png";
-import sprite_col5_var1_4 from "/sprites/05sprites/sprite_var1_4.png";
-import sprite_col5_var1_5 from "/sprites/05sprites/sprite_var1_5.png";
-
-import sprite_col6_var1_1 from "/sprites/06sprites/sprite_var1_1.png";
-import sprite_col6_var1_2 from "/sprites/06sprites/sprite_var1_2.png";
-import sprite_col6_var1_3 from "/sprites/06sprites/sprite_var1_3.png";
-import sprite_col6_var1_4 from "/sprites/06sprites/sprite_var1_4.png";
-import sprite_col6_var1_5 from "/sprites/06sprites/sprite_var1_5.png";
-
-import sprite_col7_var1_1 from "/sprites/07sprites/sprite_var1_1.png";
-import sprite_col7_var1_2 from "/sprites/07sprites/sprite_var1_2.png";
-import sprite_col7_var1_3 from "/sprites/07sprites/sprite_var1_3.png";
-import sprite_col7_var1_4 from "/sprites/07sprites/sprite_var1_4.png";
-import sprite_col7_var1_5 from "/sprites/07sprites/sprite_var1_5.png";
-
-import sprite_col1_var2_1 from "/sprites/01sprites/sprite_var2_1.png";
-import sprite_col1_var2_2 from "/sprites/01sprites/sprite_var2_2.png";
-import sprite_col1_var2_3 from "/sprites/01sprites/sprite_var2_3.png";
-import sprite_col1_var2_4 from "/sprites/01sprites/sprite_var2_4.png";
-import sprite_col1_var2_5 from "/sprites/01sprites/sprite_var2_5.png";
-
-import sprite_col2_var2_1 from "/sprites/02sprites/sprite_var2_1.png";
-import sprite_col2_var2_2 from "/sprites/02sprites/sprite_var2_2.png";
-import sprite_col2_var2_3 from "/sprites/02sprites/sprite_var2_3.png";
-import sprite_col2_var2_4 from "/sprites/02sprites/sprite_var2_4.png";
-import sprite_col2_var2_5 from "/sprites/02sprites/sprite_var2_5.png";
-
-import sprite_col3_var2_1 from "/sprites/03sprites/sprite_var2_1.png";
-import sprite_col3_var2_2 from "/sprites/03sprites/sprite_var2_2.png";
-import sprite_col3_var2_3 from "/sprites/03sprites/sprite_var2_3.png";
-import sprite_col3_var2_4 from "/sprites/03sprites/sprite_var2_4.png";
-import sprite_col3_var2_5 from "/sprites/03sprites/sprite_var2_5.png";
-
-import sprite_col4_var2_1 from "/sprites/04sprites/sprite_var2_1.png";
-import sprite_col4_var2_2 from "/sprites/04sprites/sprite_var2_2.png";
-import sprite_col4_var2_3 from "/sprites/04sprites/sprite_var2_3.png";
-import sprite_col4_var2_4 from "/sprites/04sprites/sprite_var2_4.png";
-import sprite_col4_var2_5 from "/sprites/04sprites/sprite_var2_5.png";
-
-import sprite_col5_var2_1 from "/sprites/05sprites/sprite_var2_1.png";
-import sprite_col5_var2_2 from "/sprites/05sprites/sprite_var2_2.png";
-import sprite_col5_var2_3 from "/sprites/05sprites/sprite_var2_3.png";
-import sprite_col5_var2_4 from "/sprites/05sprites/sprite_var2_4.png";
-import sprite_col5_var2_5 from "/sprites/05sprites/sprite_var2_5.png";
-
-import sprite_col6_var2_1 from "/sprites/06sprites/sprite_var2_1.png";
-import sprite_col6_var2_2 from "/sprites/06sprites/sprite_var2_2.png";
-import sprite_col6_var2_3 from "/sprites/06sprites/sprite_var2_3.png";
-import sprite_col6_var2_4 from "/sprites/06sprites/sprite_var2_4.png";
-import sprite_col6_var2_5 from "/sprites/06sprites/sprite_var2_5.png";
-
-import sprite_col7_var2_1 from "/sprites/07sprites/sprite_var2_1.png";
-import sprite_col7_var2_2 from "/sprites/07sprites/sprite_var2_2.png";
-import sprite_col7_var2_3 from "/sprites/07sprites/sprite_var2_3.png";
-import sprite_col7_var2_4 from "/sprites/07sprites/sprite_var2_4.png";
-import sprite_col7_var2_5 from "/sprites/07sprites/sprite_var2_5.png";
-
 import foreground from "/decorations/foreground.png";
 import background from "/decorations/background.png";
 
@@ -128,101 +44,6 @@ let objectsIds = [
   object5Id,
   object6Id,
   object7Id,
-];
-
-const sprites01 = [
-  sprite_col1_var1_1,
-  sprite_col1_var1_2,
-  sprite_col1_var1_3,
-  sprite_col1_var1_4,
-  sprite_col1_var1_5,
-  sprite_col1_var2_1,
-  sprite_col1_var2_2,
-  sprite_col1_var2_3,
-  sprite_col1_var2_4,
-  sprite_col1_var2_5,
-];
-const sprites02 = [
-  sprite_col2_var1_1,
-  sprite_col2_var1_2,
-  sprite_col2_var1_3,
-  sprite_col2_var1_4,
-  sprite_col2_var1_5,
-  sprite_col2_var2_1,
-  sprite_col2_var2_2,
-  sprite_col2_var2_3,
-  sprite_col2_var2_4,
-  sprite_col2_var2_5,
-];
-const sprites03 = [
-  sprite_col3_var1_1,
-  sprite_col3_var1_2,
-  sprite_col3_var1_3,
-  sprite_col3_var1_4,
-  sprite_col3_var1_5,
-  sprite_col3_var2_1,
-  sprite_col3_var2_2,
-  sprite_col3_var2_3,
-  sprite_col3_var2_4,
-  sprite_col3_var2_5,
-];
-const sprites04 = [
-  sprite_col4_var1_1,
-  sprite_col4_var1_2,
-  sprite_col4_var1_3,
-  sprite_col4_var1_4,
-  sprite_col4_var1_5,
-  sprite_col4_var2_1,
-  sprite_col4_var2_2,
-  sprite_col4_var2_3,
-  sprite_col4_var2_4,
-  sprite_col4_var2_5,
-];
-const sprites05 = [
-  sprite_col5_var1_1,
-  sprite_col5_var1_2,
-  sprite_col5_var1_3,
-  sprite_col5_var1_4,
-  sprite_col5_var1_5,
-  sprite_col5_var2_1,
-  sprite_col5_var2_2,
-  sprite_col5_var2_3,
-  sprite_col5_var2_4,
-  sprite_col5_var2_5,
-];
-const sprites06 = [
-  sprite_col6_var1_1,
-  sprite_col6_var1_2,
-  sprite_col6_var1_3,
-  sprite_col6_var1_4,
-  sprite_col6_var1_5,
-  sprite_col6_var2_1,
-  sprite_col6_var2_2,
-  sprite_col6_var2_3,
-  sprite_col6_var2_4,
-  sprite_col6_var2_5,
-];
-const sprites07 = [
-  sprite_col7_var1_1,
-  sprite_col7_var1_2,
-  sprite_col7_var1_3,
-  sprite_col7_var1_4,
-  sprite_col7_var1_5,
-  sprite_col7_var2_1,
-  sprite_col7_var2_2,
-  sprite_col7_var2_3,
-  sprite_col7_var2_4,
-  sprite_col7_var2_5,
-];
-
-const sprites = [
-  sprites01,
-  sprites02,
-  sprites03,
-  sprites04,
-  sprites05,
-  sprites06,
-  sprites07,
 ];
 
 // Set engine
@@ -271,17 +92,10 @@ function createObject(x, y, i) {
   // Create a stack with the five rectangles
   let stack = Composites.stack(x, y, 1, 5, 5, 5, function (x, y, column, row) {
     let currentWidth = initialWidth - row * reductionStep;
-    let currentHeight = initialHeight + gsap.utils.random(-15, 12);
-
-    let spriteRandom = Math.round(Math.random());
-    if (spriteRandom == 0) {
-      {
-        row += 5;
-      }
-    }
+    let currentHeight = initialHeight + gsap.utils.random(-15 * scales.decorationY, 15 * scales.decorationY);
 
     return Bodies.rectangle(
-      x + gsap.utils.random(-60, 60),
+      x + gsap.utils.random(-120 * scales.decorationX, 120 * scales.decorationX),
       y,
       currentWidth,
       currentHeight,
@@ -291,7 +105,9 @@ function createObject(x, y, i) {
         isStatic: false,
         render: {
           sprite: {
-            texture: sprites[i][row],
+            texture: `/sprites/0${i + 1}sprites/sprite_var${Math.round(
+              gsap.utils.random(1, 3)
+            )}_${row + 1}.png`,
             xScale: 0.3 * scales.decorationX,
             yScale: 0.4 * scales.decorationX,
           },
@@ -301,15 +117,13 @@ function createObject(x, y, i) {
     );
   });
 
-  // Body.scale(stack, 2, 2)
-
   // Chain the five rectangles together
   Composites.chain(stack, 0, 0.5, 0, -0.5, {
     stiffness: 1,
     length: 3 * scales.decorationY,
     render: {
-      visible : false
-    }
+      visible: false,
+    },
   });
 
   // Stick the whole object to the top of viewport with a constraint
@@ -322,19 +136,16 @@ function createObject(x, y, i) {
       stiffness: 0.5,
       length: 90 * scales.decorationY,
       render: {
-        visible : false
-      }
+        visible: false,
+      },
     })
   );
 
   Composite.add(object, stack);
-
-  // Composite.scale(object,2,2)
-
   return object;
 }
 
-// Manually place the 7 objects in line using the function above
+// Place the 7 flowers
 for (let i = 0; i < objectQuantity; i++) {
   let object = createObject(
     sizes.windowWidth -
@@ -368,7 +179,7 @@ let foregroundBody = Bodies.rectangle(
   sizes.windowHeight,
   {
     isStatic: true,
-    isSensor: true, // Désactive les collisions tout en maintenant le rendu
+    isSensor: true,
     render: {
       sprite: {
         texture: foreground,
@@ -531,8 +342,3 @@ Runner.run(runner, engine);
 // Run engine and render
 Engine.run(engine);
 Render.run(render);
-
-// const foregroundHTML = document.querySelector('.foreground')
-// const canvasPosition = document.querySelectorAll('canvas')[1].getBoundingClientRect()
-// console.log(`${canvasPosition.y}px`)
-// foregroundHTML.style.top = `${canvasPosition.y}px`
