@@ -16,4 +16,4 @@ Gliss n Chill places you in a **serene forest environment** surrounded by **seve
 
 ## 🚀 Development Notes  
 This project is a **real-time interactive experience**, blending movement and sound to create a **calm and engaging atmosphere**.
-Test right now at https://di30.gobelins-pedago.fr/2026/gasquet/glisse-n-chill/
+Test right now, on desktop, at https://glisse-n-chill.vercel.app/
