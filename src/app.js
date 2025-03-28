@@ -292,7 +292,7 @@ const onSoundEnd = (e) => {
 const playSound = (path) => {
   const tag = document.createElement("audio");
   tag.src = path;
-  tag.volume = 0.7;
+  tag.volume = 1;
   document.body.appendChild(tag);
   tag.play();
   tag.addEventListener("ended", onSoundEnd);
