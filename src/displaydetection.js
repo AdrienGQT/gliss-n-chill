@@ -1,3 +1,5 @@
+aolalallal
+
 let video = document.getElementById("webcam");
 const liveView = document.getElementById("liveView");
 

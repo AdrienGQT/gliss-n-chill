@@ -47,34 +47,39 @@ let objectsIds = [
 ];
 
 // Set engine
-let engine = Engine.create();
+const engine = Engine.create();
 
-let sizes = {
+const sizes = {
   windowWidth: window.innerWidth,
   windowHeight: window.innerHeight,
 };
 
-let scales = {
+const scales = {
   decorationX: sizes.windowWidth / 1820,
   decorationY: sizes.windowHeight / 980,
   min: Math.min(sizes.windowWidth / 1820, sizes.windowHeight / 980),
   max: Math.max(sizes.windowWidth / 1820, sizes.windowHeight / 980),
 };
 
-let objectSpacing = -250 * scales.decorationX;
-let objectQuantity = 7;
+// const objectSpacing = -250 * scales.decorationX;
+const objectQuantity = 7;
 
 // Set render
-let render = Render.create({
+const render = Render.create({
   element: document.body,
   engine: engine,
   options: {
     width: sizes.windowWidth,
     height: sizes.windowHeight,
+    hasBounds: true, // Enable viewport culling
+    pixelRatio: window.devicePixelRatio || 1, // Optimize for device pixel ratio
+    wireframes: false, // Already set, but emphasize
+    showDebug: false,
+    showAxes: false,
+    showPositions: false,
     showAngleIndicator: false,
     showCollisions: false,
     showVelocity: false,
-    wireframes: false,
   },
 });
 
@@ -83,39 +88,53 @@ engine.world.gravity.y = 4;
 
 // Function to create a composite object with rectangles
 function createObject(x, y, i) {
-  let object = Composite.create();
+  const object = Composite.create();
 
-  let initialWidth = 150 * scales.decorationX;
-  let initialHeight = 100 * scales.decorationX;
-  let reductionStep = 13;
+  const initialWidth = 150 * scales.decorationX;
+  const initialHeight = 100 * scales.decorationX;
+  const reductionStep = 13;
 
   // Create a stack with the five rectangles
-  let stack = Composites.stack(x, y, 1, 5, 5, 5, function (x, y, column, row) {
-    let currentWidth = initialWidth - row * reductionStep;
-    let currentHeight = initialHeight + gsap.utils.random(-15 * scales.decorationY, 15 * scales.decorationY);
+  const stack = Composites.stack(
+    x,
+    y,
+    1,
+    5,
+    5,
+    5,
+    function (x, y, column, row) {
+      const currentWidth = initialWidth - row * reductionStep;
+      const currentHeight =
+        initialHeight +
+        gsap.utils.random(-15 * scales.decorationY, 15 * scales.decorationY);
 
-    return Bodies.rectangle(
-      x + gsap.utils.random(-120 * scales.decorationX, 120 * scales.decorationX),
-      y,
-      currentWidth,
-      currentHeight,
-      {
-        frictionAir: 0.01,
-        density: 200,
-        isStatic: false,
-        render: {
-          sprite: {
-            texture: `/sprites/0${i + 1}sprites/sprite_var${Math.round(
-              gsap.utils.random(1, 3)
-            )}_${row + 1}.png`,
-            xScale: 0.3 * scales.decorationX,
-            yScale: 0.4 * scales.decorationX,
+      return Bodies.rectangle(
+        x +
+          gsap.utils.random(
+            -120 * scales.decorationX,
+            120 * scales.decorationX
+          ),
+        y,
+        currentWidth,
+        currentHeight,
+        {
+          frictionAir: 0.01,
+          density: 200,
+          isStatic: false,
+          render: {
+            sprite: {
+              texture: `/sprites/0${i + 1}sprites/sprite_var${Math.round(
+                gsap.utils.random(1, 3)
+              )}_${row + 1}.png`,
+              xScale: 0.3 * scales.decorationX,
+              yScale: 0.4 * scales.decorationX,
+            },
           },
-        },
-        objectId: i,
-      }
-    );
-  });
+          objectId: i,
+        }
+      );
+    }
+  );
 
   // Chain the five rectangles together
   Composites.chain(stack, 0, 0.5, 0, -0.5, {
@@ -147,7 +166,7 @@ function createObject(x, y, i) {
 
 // Place the 7 flowers
 for (let i = 0; i < objectQuantity; i++) {
-  let object = createObject(
+  const object = createObject(
     sizes.windowWidth -
       200 * scales.decorationX +
       (i + 0.5) *
@@ -163,7 +182,7 @@ for (let i = 0; i < objectQuantity; i++) {
 }
 
 // Create the hand shape
-let hand = Bodies.circle(100, 100, 25, {
+const hand = Bodies.circle(100, 100, 25, {
   render: {
     strokeStyle: "white",
     fillStyle: "rgba(255,255,255,0.5)",
@@ -172,7 +191,7 @@ let hand = Bodies.circle(100, 100, 25, {
   isSensor: true,
 });
 
-let foregroundBody = Bodies.rectangle(
+const foregroundBody = Bodies.rectangle(
   sizes.windowWidth / 2,
   sizes.windowHeight / 2,
   sizes.windowWidth,
@@ -190,7 +209,7 @@ let foregroundBody = Bodies.rectangle(
   }
 );
 
-let backgroundBody = Bodies.rectangle(
+const backgroundBody = Bodies.rectangle(
   sizes.windowWidth / 2,
   sizes.windowHeight / 2,
   sizes.windowWidth,
@@ -213,24 +232,23 @@ let backgroundBody = Bodies.rectangle(
 World.add(engine.world, [backgroundBody, foregroundBody]);
 
 // Vitesse de transition de la main (ajuste cette valeur pour obtenir la fluidité souhaitée)
-let handSpeed = 0.3; // 0.1 est une vitesse relativement lente
+const handSpeed = 0.1; // 0.1 est une vitesse relativement lente
 
 // Fonction pour interpoler la position de la main vers palmX et palmY
 const refreshHand = () => {
-  // Appelle la fonction qui met à jour palmX et palmY
-  predictWebcam();
+  // Récupérer palmX et palmY
   palmX = getPalmX();
   palmY = getPalmY();
 
   // Si palmX et palmY sont définis
   if (palmX !== undefined && palmY !== undefined) {
     // Définir les coordonnées cibles
-    let targetX = palmX * 2000; // Conversion en coordonnées de la scène
-    let targetY = palmY * 1100; // Conversion en coordonnées de la scène
+    const targetX = palmX * 2000; // Conversion en coordonnées de la scène
+    const targetY = palmY * 1100; // Conversion en coordonnées de la scène
 
     // Appliquer une interpolation progressive pour déplacer la main
-    let newX = hand.position.x + (targetX - hand.position.x) * handSpeed;
-    let newY = hand.position.y + (targetY - hand.position.y) * handSpeed;
+    const newX = hand.position.x + (targetX - hand.position.x) * handSpeed;
+    const newY = hand.position.y + (targetY - hand.position.y) * handSpeed;
 
     // Déplacer la main vers la nouvelle position interpolée
     Body.setPosition(hand, { x: newX, y: newY });
@@ -272,7 +290,7 @@ const onSoundEnd = (e) => {
 };
 
 const playSound = (path) => {
-  let tag = document.createElement("audio");
+  const tag = document.createElement("audio");
   tag.src = path;
   tag.volume = 0.7;
   document.body.appendChild(tag);
@@ -282,43 +300,43 @@ const playSound = (path) => {
 
 // Collision start detector
 Events.on(engine, "collisionStart", (event) => {
+  console.log('collision')
   // Get the two bodies involved in the collision
-  let pairs = event.pairs;
+  const pairs = event.pairs;
 
   pairs.forEach(function (pair) {
-    let bodyA = pair.bodyA;
-    let bodyB = pair.bodyB;
+    const bodyA = pair.bodyA;
+    const bodyB = pair.bodyB;
 
-    // Check if "hand" is involved in the collision
-    if (bodyA === hand || bodyB === hand) {
-      let otherBody = bodyA === hand ? bodyB : bodyA;
+    if (bodyA != hand && bodyB != hand) return;
 
-      // Store the colliding object and its ID
-      currentCollidingBodyId = otherBody.objectId;
-      collidingBody = otherBody;
+    const otherBody = bodyA === hand ? bodyB : bodyA;
 
-      if (!collisionInterval) {
-        // Start interval if not already
-        pHandX = hand.position.x;
-        pHandY = hand.position.y;
-        collisionInterval = setInterval(giveVelocity, 5);
-        // console.log(currentCollidingBodyId);
-        // console.log(currentCollidingBodyId)
-        for (let i = 0; i < objectQuantity; i++) {
-          playSound(`sounds/notes/note0${currentCollidingBodyId + 1}.mp3`);
-        }
-      }
+    // Store the colliding object and its ID
+    currentCollidingBodyId = otherBody.objectId;
+    collidingBody = otherBody;
+
+    if (!collisionInterval) {
+      // Start interval if not already
+      pHandX = hand.position.x;
+      pHandY = hand.position.y;
+      collisionInterval = setInterval(giveVelocity, 5);
+      playSound(`sounds/notes/note0${currentCollidingBodyId + 1}.mp3`);
     }
+    // // Check if "hand" is involved in the collision
+    // if (bodyA === hand || bodyB === hand) {
+
+    // }
   });
 });
 
 // Collision end detector
 Events.on(engine, "collisionEnd", (event) => {
-  let pairs = event.pairs;
+  const pairs = event.pairs;
 
   pairs.forEach(function (pair) {
-    let bodyA = pair.bodyA;
-    let bodyB = pair.bodyB;
+    const bodyA = pair.bodyA;
+    const bodyB = pair.bodyB;
 
     // Check if hand is involved in the collision
     if (bodyA === hand || bodyB === hand) {
@@ -336,9 +354,9 @@ Events.on(engine, "collisionEnd", (event) => {
 World.add(engine.world, [hand]);
 
 // Create Runner
-let runner = Runner.create();
+const runner = Runner.create();
 Runner.run(runner, engine);
 
 // Run engine and render
-Engine.run(engine);
+Runner.run(engine);
 Render.run(render);
